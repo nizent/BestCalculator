@@ -75,30 +75,31 @@ function calculateProportionals(){
     let SVAn = document.getElementById("SVAn:").value;
     let CI = document.getElementById("CI:").value;
     let message = "<div id=\"popupCloseButton\" class=\"popupCloseButton\" onclick=\"deactivateMessage();\">&times;</div>";
+    message+="<h1 class=\"Title\"> Resultados </h1><br>";
     message += "<table class=\"table table-striped\"><tr><th>Descripción</th><th>Valor</th></tr>";
     let today = new Date();
     let dd = parseFloat(String(today.getDate()).padStart(2, '0'));
     let mm = parseFloat(String(today.getMonth() + 1).padStart(2, '0'));
 
     /*This code adds the proportional devolution*/
-    message+="<tr><td>Monto devolución proporcionales</td><td>"+Number(addProportionalDevolutionOrPayment(dom, spa, dd, mm)).toFixed(1).toString()+"</td></tr>";
-    message+="<tr><td>Monto cobro proporcionales</td><td>"+Number(addProportionalDevolutionOrPayment(dom, spn, dd, mm)).toFixed(1).toString()+"</td></tr>";
+    message+="<tr><td>Monto devolución proporcionales</td><td>"+Number(Number(addProportionalDevolutionOrPayment(dom, spa, dd, mm)).toFixed(0)).toLocaleString()+"</td></tr>";
+    message+="<tr><td>Monto cobro proporcionales</td><td>"+Number(Number(addProportionalDevolutionOrPayment(dom, spn, dd, mm)).toFixed(0)).toLocaleString()+"</td></tr>";
 
     CI=extractFloat(CI);
     SVAa=extractFloat(SVAa);
     if(SVAn===''){
         if(dom!==dd){
-            message+="<tr><td>Monto total a pagar en la siguiente boleta luego del cambio de plan</td><td>"+Number(spn - addProportionalDevolutionOrPayment(dom, spa, dd, mm) + addProportionalDevolutionOrPayment(dom, spn, dd, mm) + SVAa - dcto + CI).toFixed(1).toString()+"</td></tr>";
+            message+="<tr><td>Monto total a pagar en la siguiente boleta luego del cambio de plan</td><td>"+Number(Number(spn - addProportionalDevolutionOrPayment(dom, spa, dd, mm) + addProportionalDevolutionOrPayment(dom, spn, dd, mm) + SVAa - dcto + CI).toFixed(0)).toLocaleString()+"</td></tr>";
         } else {
-            message+="<tr><td>Como ya se le emitió su boleta con el plan anterior el monto a pagar en su siguiente boleta es</td><td>"+Number(spa + SVAa).toFixed(1).toString()+"</td></tr>";
+            message+="<tr><td>Como ya se le emitió su boleta con el plan anterior el monto a pagar en su siguiente boleta es</td><td>"+Number(Number(spa + SVAa).toFixed(0)).toLocaleString()+"</td></tr>";
         }
     } else {
         SVAn=extractFloat(SVAn);
-        message+="<tr><td>Proporcional servicio adicional</td><td>"+Number(additionalProportionals(dd, SVAn, dom, mm)).toFixed(1).toString()+"</td></tr>";
+        message+="<tr><td>Proporcional servicio adicional</td><td>"+Number(Number(additionalProportionals(dd, SVAn, dom, mm)).toFixed(0)).toLocaleString()+"</td></tr>";
         if(dom!==dd){
-            message+="<tr><td>Monto total a pagar en la siguiente boleta luego del cambio de plan</td><td>"+ Number(spn - addProportionalDevolutionOrPayment(dom, spa, dd, mm) + addProportionalDevolutionOrPayment(dom, spn, dd, mm) + additionalProportionals(dd, SVAn, dom, mm) + SVAa-dcto + CI).toFixed(1).toString()+"</td></tr>";
+            message+="<tr><td>Monto total a pagar en la siguiente boleta luego del cambio de plan</td><td>"+ Number(Number(spn - addProportionalDevolutionOrPayment(dom, spa, dd, mm) + addProportionalDevolutionOrPayment(dom, spn, dd, mm) + additionalProportionals(dd, SVAn, dom, mm) + SVAa-dcto + CI).toFixed(0)).toLocaleString()+"</td></tr>";
         } else {
-            message+="<tr><td>Como ya se le emitió su boleta con el plan anterior el monto a pagar en su siguiente boleta es</td><td>"+Number(spa + SVAa).toFixed(1).toString()+"</td></tr>";
+            message+="<tr><td>Como ya se le emitió su boleta con el plan anterior el monto a pagar en su siguiente boleta es</td><td>"+Number(Number(spa + SVAa).toFixed(0)).toLocaleString()+"</td></tr>";
         }
     }
     message+="</table>";
