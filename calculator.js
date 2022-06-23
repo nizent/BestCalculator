@@ -29,13 +29,13 @@ function addProportionalDevolutionOrPayment(dom_day, spa_value, dd_day, mm_month
         if([2,4,6,9,11].includes(mm_month)){
             return (30-dd_day+dom_day)/30*spa_value;
         } else {
-            return (31-dd_day+dom_day)/30*spa_value;
+            return (31-dd_day+dom_day)/31*spa_value;
         }
     } else {
         if([2,4,6,9,11].includes(mm_month)){
             return (dom_day-dd_day)/30*spa_value;
         } else {
-            return (dom_day-dd_day)/30*spa_value;
+            return (dom_day-dd_day)/31*spa_value;
         }
     }
 }
@@ -48,12 +48,21 @@ function extractFloat(stringText){
     }
 }
 
-function additionalProportionals(now_int, valor_SVA, dom){
-    if(now_int > dom){
-        return valor_SVA*(dom+30-now_int)/30;
+function additionalProportionals(now_int, valor_SVA, dom, mm_month){
+    if([2,4,6,9,11].includes(mm_month)){
+        if(now_int > dom){
+            return valor_SVA*(dom+30-now_int)/30;
+        } else {
+            return valor_SVA*(dom-now_int)/30;
+        }
     } else {
-        return valor_SVA*(dom-now_int)/30;
-    }   
+        if(now_int > dom){
+            return valor_SVA*(dom+31-now_int)/31;
+        } else {
+            return valor_SVA*(dom-now_int)/31;
+        }
+    }
+       
 }
 
 function calculateProportionals(){
@@ -85,9 +94,9 @@ function calculateProportionals(){
         }
     } else {
         SVAn=extractFloat(SVAn);
-        message+="<tr><td>Proporcional servicio adicional</td><td>"+Number(additionalProportionals(dd, SVAn, dom)).toFixed(1).toString()+"</td></tr>";
+        message+="<tr><td>Proporcional servicio adicional</td><td>"+Number(additionalProportionals(dd, SVAn, dom, mm)).toFixed(1).toString()+"</td></tr>";
         if(dom!==dd){
-            message+="<tr><td>Monto total a pagar en la siguiente boleta luego del cambio de plan</td><td>"+ Number(spn - addProportionalDevolutionOrPayment(dom, spa, dd, mm) + addProportionalDevolutionOrPayment(dom, spn, dd, mm) + additionalProportionals(dd, SVAn, dom) + SVAa-dcto + CI).toFixed(1).toString()+"</td></tr>";
+            message+="<tr><td>Monto total a pagar en la siguiente boleta luego del cambio de plan</td><td>"+ Number(spn - addProportionalDevolutionOrPayment(dom, spa, dd, mm) + addProportionalDevolutionOrPayment(dom, spn, dd, mm) + additionalProportionals(dd, SVAn, dom, mm) + SVAa-dcto + CI).toFixed(1).toString()+"</td></tr>";
         } else {
             message+="<tr><td>Como ya se le emitió su boleta con el plan anterior el monto a pagar en su siguiente boleta es</td><td>"+Number(spa + SVAa).toFixed(1).toString()+"</td></tr>";
         }
