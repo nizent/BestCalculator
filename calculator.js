@@ -106,7 +106,7 @@ function calculateProportionals(){
     message+="</table></div>";
     if(document.getElementById("DOM").value!=='' && document.getElementById("SPA").value && document.getElementById("SPN").value){
         document.getElementById("message").innerHTML=message;    
-        document.getElementById("message").style.display="block";
+        document.getElementById("message").style.display="grid";
         document.getElementById("hover_bkgr_fricc").style.display="block";
     }
     

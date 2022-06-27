@@ -18,6 +18,8 @@
     #message {
         background-color: white;
         margin-left: 2%;
+        display: grid !important;
+        align-items: center !important;
     }
     
     .hover_bkgr_fricc > div {
@@ -47,20 +49,22 @@
     
     .hover_bkgr_fricc .helper{
         display:inline-block;
-        height:20%;
+        height:15%;
         vertical-align:middle;
     }
 
     #message {
         background-color: white;
         margin-left: 20%;
+        display: grid !important;
+        align-items: center !important;
     }
     
     .hover_bkgr_fricc > div {
         background-color: #fff;
         box-shadow: 10px 10px 60px #555;
         display: inline-block;
-        height: 60%;
+        height: 70%;
         vertical-align: middle;
         width: 60%;
         position: relative;
@@ -109,6 +113,11 @@
 
 .scrollable {
     overflow-y: auto;
+    table-layout: fixed;
+}
+
+table {
+    width: 100%;
 }
 
 .popupCloseButton {
