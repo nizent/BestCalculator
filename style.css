@@ -7,7 +7,30 @@
         padding: 5%;
         border-radius: 5px;
         box-shadow: 60px -16px indigo;
-    }     
+    }   
+    
+    .hover_bkgr_fricc .helper{
+        display:inline-block;
+        height:10%;
+        vertical-align:middle;
+    }
+
+    #message {
+        background-color: white;
+        margin-left: 2%;
+    }
+    
+    .hover_bkgr_fricc > div {
+        background-color: #fff;
+        box-shadow: 10px 10px 60px #555;
+        display: inline-block;
+        height: 80%;
+        vertical-align: middle;
+        width: 96%;
+        position: relative;
+        border-radius: 8px;
+        padding: 15px 5%;
+    }
 }
 
 @media (min-width: 1000px) {
@@ -20,6 +43,30 @@
         border-radius: 5em;
         box-shadow: 60px -16px indigo;
     }    
+
+    
+    .hover_bkgr_fricc .helper{
+        display:inline-block;
+        height:20%;
+        vertical-align:middle;
+    }
+
+    #message {
+        background-color: white;
+        margin-left: 20%;
+    }
+    
+    .hover_bkgr_fricc > div {
+        background-color: #fff;
+        box-shadow: 10px 10px 60px #555;
+        display: inline-block;
+        height: 60%;
+        vertical-align: middle;
+        width: 60%;
+        position: relative;
+        border-radius: 8px;
+        padding: 15px 5%;
+    }
 }
 
 
@@ -60,11 +107,6 @@
     to {background-position: center left;}
 }
 
-#message {
-    background-color: white;
-    margin-left: 20%;
-}
-
 .scrollable {
     overflow-y: auto;
 }
@@ -103,20 +145,5 @@
     z-index:10000;
 }
 
-.hover_bkgr_fricc .helper{
-    display:inline-block;
-    height:20%;
-    vertical-align:middle;
-}
-.hover_bkgr_fricc > div {
-    background-color: #fff;
-    box-shadow: 10px 10px 60px #555;
-    display: inline-block;
-    height: 60%;
-    vertical-align: middle;
-    width: 60%;
-    position: relative;
-    border-radius: 8px;
-    padding: 15px 5%;
-}
+
   
