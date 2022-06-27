@@ -75,7 +75,7 @@ function calculateProportionals(){
     let SVAn = document.getElementById("SVAn:").value;
     let CI = document.getElementById("CI:").value;
     let message = "<div id=\"popupCloseButton\" class=\"popupCloseButton\" onclick=\"deactivateMessage();\">&times;</div>";
-    message+="<h1 class=\"Title\"> Resultados </h1><br>";
+    message+="<div class=\"scrollable\"><h1 class=\"Title\"> Resultados </h1><br>";
     message += "<table class=\"table table-striped\"><tr><th>Descripción</th><th>Valor</th></tr>";
     let today = new Date();
     let dd = parseFloat(String(today.getDate()).padStart(2, '0'));
@@ -102,7 +102,7 @@ function calculateProportionals(){
             message+="<tr><td>Como ya se le emitió su boleta con el plan anterior el monto a pagar en su siguiente boleta es</td><td>"+Number(Number(spa + SVAa).toFixed(0)).toLocaleString()+"</td></tr>";
         }
     }
-    message+="</table>";
+    message+="</table></div>";
     if(document.getElementById("DOM").value!=='' && document.getElementById("SPA").value && document.getElementById("SPN").value){
         document.getElementById("message").innerHTML=message;    
         document.getElementById("message").style.display="block";
