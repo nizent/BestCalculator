@@ -88,6 +88,7 @@ function calculateProportionals(){
     CI=extractFloat(CI);
     SVAa=extractFloat(SVAa);
     if(SVAn===''){
+        message+="<tr><td>Proporcional servicio adicional</td><td>No aplica</td></tr>";
         if(dom!==dd){
             message+="<tr><td>Monto total a pagar en la siguiente boleta luego del cambio de plan</td><td>"+Number(Number(spn - addProportionalDevolutionOrPayment(dom, spa, dd, mm) + addProportionalDevolutionOrPayment(dom, spn, dd, mm) + SVAa - dcto + CI).toFixed(0)).toLocaleString()+"</td></tr>";
         } else {
